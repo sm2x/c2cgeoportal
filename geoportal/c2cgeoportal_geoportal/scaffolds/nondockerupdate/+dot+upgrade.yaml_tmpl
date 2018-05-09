@@ -93,6 +93,15 @@ files_to_remove:
   - file: apache/README.txt.mako
     version: 2.3
     from: 2.2
+  - file: {{package}}_geoportal/static-ngeo/less/{{package}}.less'
+    version: 2.3
+    from: 2.2
+  - file: {{package}}_geoportal/static-ngeo/less/desktop.less'
+    version: 2.3
+    from: 2.2
+  - file: {{package}}_geoportal/static-ngeo/less/mobile.less'
+    version: 2.3
+    from: 2.2
 
 files_to_move:
   - from: vars_{{package}}.yaml
