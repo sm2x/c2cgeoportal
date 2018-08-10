@@ -27,8 +27,6 @@ ${service_defaults('externaldb', 5432)}\
     image: camptocamp/mapserver:7.2
     volumes_from:
       - config:rw
-    links:
-      - db
 ${service_defaults('mapserver', 80)}\
 
   build:
@@ -41,10 +39,6 @@ ${service_defaults('mapserver', 80)}\
     entrypoint:
       - wait-db-and-run
       - run
-    links:
-      - db
-      - externaldb
-      - mapserver
 ${service_defaults('geoportal-build', 80)}\
       - HOME_DIR
       - USER_NAME

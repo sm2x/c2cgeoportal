@@ -32,8 +32,6 @@ ${service_defaults('mapserver', 80)}\
     entrypoint:
       - wait-db-and-run
       - run
-    links:
-      - mapserver
 ${service_defaults('geoportal-build', 80)}\
       - HOME_DIR
       - USER_NAME
