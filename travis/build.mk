@@ -1,5 +1,5 @@
 VARS_FILE = vars_travis.yaml
 
-CGXP_API = FALSE
+NGEO_API = FALSE
 
 include Makefile

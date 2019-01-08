@@ -38,7 +38,7 @@ export DEVELOPMENT
 LANGUAGES ?= en fr de
 NGEO_INTERFACES ?= desktop mobile iframe_api
 CGXP_INTERFACES ?=
-CGXP_API ?= TRUE
+NGEO_API ?= TRUE
 CGXP_XAPI ?= FALSE
 INTERFACES += $(NGEO_INTERFACES) $(CGXP_INTERFACES)
 export INTERFACES
@@ -171,7 +171,7 @@ JSBUILD_OUTPUT_FILES += xapi.js
 JSBUILD_OUTPUT_FILES += $(addprefix lang-, $(addsuffix .js, $(LANGUAGES)))
 CSS_XAPI_OUTPUT = $(OUTPUT_DIR)/xapi.css
 endif
-ifeq ($(CGXP_API), TRUE)
+ifeq ($(NGEO_API), TRUE)
 JSBUILD_OUTPUT_FILES += api.js
 JSBUILD_OUTPUT_FILES += $(addprefix api-lang-, $(addsuffix .js, $(LANGUAGES)))
 CSS_API_OUTPUT = $(OUTPUT_DIR)/api.css
