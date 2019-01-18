@@ -823,8 +823,9 @@ class Entry:
 
     @view_config(route_name="apijs", renderer="api/api.js")
     def apijs(self):
+        ogc_server_name = self.settings["api"]["ogc_server"]
         ogc_server = models.DBSession.query(main.OGCServer).filter(
-            main.OGCServer.name == self.settings["api"]["ogc_server"]
+            main.OGCServer.name == ogc_server_name
         ).one()
         wms, wms_errors = self._wms_getcap(ogc_server)
         if len(wms_errors) > 0:  # pragma: no cover
@@ -845,12 +846,14 @@ class Entry:
             "queryable_layers": json.dumps(queryable_layers),
             "url_params": {"cache_version": cache_version} if cache_version else {},
             "tiles_url": json.dumps(self.settings.get("tiles_url")),
+            "wms_url": self.request.route_url('mapserverproxy', _query={'ogcserver': ogc_server_name}),
         }
 
     @view_config(route_name="xapijs", renderer="api/xapi.js")
     def xapijs(self):
+        ogc_server_name = self.settings["api"]["ogc_server"]
         ogc_server = models.DBSession.query(main.OGCServer).filter(
-            main.OGCServer.name == self.settings["api"]["ogc_server"]
+            main.OGCServer.name == ogc_server_name
         ).one()
         wms, wms_errors = self._wms_getcap(ogc_server)
         if len(wms_errors) > 0:  # pragma: no cover
@@ -872,6 +875,7 @@ class Entry:
             "queryable_layers": json.dumps(queryable_layers),
             "url_params": {"cache_version": cache_version} if cache_version else {},
             "tiles_url": json.dumps(self.settings.get("tiles_url")),
+            "wms_url": self.request.route_url('mapserverproxy', _query={'ogcserver': ogc_server_name}),
         }
 
     @view_config(route_name="apihelp", renderer="api/apihelp.html")

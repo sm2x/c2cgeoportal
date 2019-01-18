@@ -171,7 +171,7 @@ document.write('<link rel="stylesheet" type="text/css" href="'
         return new {{package}}.Map(config);
     }
 
-    this.wmsURL = "${request.route_url('mapserverproxy') | n}";
+    this.wmsURL = "${wms_url | n}";
     this.queryableLayers = ${queryable_layers | n};
     return cgxp.api.Map.call(this, config);
 };
